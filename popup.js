@@ -1,6 +1,3 @@
-// Import the API key from env.js (make sure this file is linked correctly in your HTML)
-import { MY_API_KEY } from 'env.js';
-
 // popup.js: Handles user interaction and communicates with content.js and OpenAI's API
 document.getElementById('askButton').addEventListener('click', function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
