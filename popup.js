@@ -24,8 +24,9 @@ document.getElementById('askButton').addEventListener('click', function() {
 });
 
 // Function to send question and article text to OpenAI and return the answer
+// Function to send question and article text to OpenAI and return the answer
 async function askOpenAI(question, articleText) {
-    let prompt = `${question}:\n${articleText}`
+    let prompt = `${question}:\n${articleText}`;
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -44,10 +45,12 @@ async function askOpenAI(question, articleText) {
         })
     });
 
-    if (!response.ok) {
-        throw new Error('Failed to fetch answer from OpenAI');
+    const data = await response.json(); // Log the raw response data
+    console.log('Response from OpenAI:', data);
+
+    if (!response.ok || !data.choices || data.choices.length === 0 || !data.choices[0].hasOwnProperty('text')) {
+        throw new Error('Failed to fetch answer from OpenAI or received an unexpected response structure');
     }
 
-    const data = await response.json();
     return data.choices[0].text.trim();
 }
