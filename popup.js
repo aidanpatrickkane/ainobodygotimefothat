@@ -46,11 +46,6 @@ async function askOpenAI(question, articleText) {
     });
 
     const data = await response.json(); // Log the raw response data
-    console.log('Response from OpenAI:', data);
-
-    if (!response.ok || !data.choices || data.choices.length === 0 || !data.choices[0].hasOwnProperty('text')) {
-        throw new Error('Failed to fetch answer from OpenAI or received an unexpected response structure');
-    }
-
-    return data.choices[0].text.trim();
+    
+    return data.choices[0].message.content.trim();
 }
