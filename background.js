@@ -1,5 +1,8 @@
 // background.js: listens for the browser action to be clicked
-chrome.browserAction.onClicked.addListener(function(tab) {
-    chrome.tabs.executeScript(null, {file: "content.js"});
-  });
+chrome.action.onClicked.addListener(function(tab) {
+    chrome.scripting.executeScript({
+      target: {tabId: tab.id},
+      files: ['content.js']
+    });
+});
   
