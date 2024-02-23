@@ -33,7 +33,7 @@ async function askOpenAI(question, articleText) {
             'Authorization': `Bearer ${MY_API_KEY}`
         },
         body: JSON.stringify({
-            model: 'gpt-4-turbo-preview',
+            model: 'gpt-4-0125-preview',
             prompt: `${question}\n\n${articleText}`,
             temperature: 0.7,
             max_tokens: 150,
