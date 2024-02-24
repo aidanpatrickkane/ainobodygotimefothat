@@ -1,5 +1,6 @@
 {
   "manifest_version": 3,
+  "author": "Aidan Kane",
   "name": "Ainobodygotimefothat",
   "version": "1.0",
   "permissions": ["activeTab"],
@@ -8,7 +9,7 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "cyberpunkdolphin.png"
+    "default_icon": "aino-logo.webp"
   },
   "background": {
     "service_worker": "background.js"
