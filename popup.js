@@ -34,7 +34,7 @@ document.getElementById('askButton').addEventListener('click', function() {
 // Function to send question and article text to OpenAI and return the answer
 // Function to send question and article text to OpenAI and return the answer
 async function askOpenAI(question, articleText) {
-    let prompt = `Please provide a concise answer to the following question:\n${question}\n\nBased on the article:\n${articleText}`;
+    let prompt = `Please provide a very pithy and concise answer to the following question:\n${question}\n\nBased on the article:\n${articleText}`;
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -46,7 +46,7 @@ async function askOpenAI(question, articleText) {
             model: 'gpt-4-0125-preview',
             messages: [{ role: "user", content: prompt }],
             temperature: 0.7,
-            max_tokens: 250,
+            max_tokens: 500,
             top_p: 1.0,
             frequency_penalty: 0.0,
             presence_penalty: 0.0,
