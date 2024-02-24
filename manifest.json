@@ -2,14 +2,19 @@
   "manifest_version": 3,
   "author": "Aidan Kane",
   "name": "Ainobodygotimefothat",
+  "description": "Quickly get your questions answered from webpage",
   "version": "1.0",
   "permissions": ["activeTab"],
   "host_permissions": [
     "https://api.openai.com/*"
   ],
   "action": {
-    "default_popup": "popup.html",
-    "default_icon": "aino-logo.webp"
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "aino-logo.webp",
+    "48": "aino-logo.webp",
+    "128": "aino-logo.webp"
   },
   "background": {
     "service_worker": "background.js"
