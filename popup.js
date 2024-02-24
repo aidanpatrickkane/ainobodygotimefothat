@@ -6,17 +6,25 @@ document.getElementById('askButton').addEventListener('click', function() {
             if (chrome.runtime.lastError || !response) {
                 console.error('Error sending message to content script:', chrome.runtime.lastError);
                 document.getElementById('answer').innerText = 'There was an error processing your request.';
+                //remove flex styling if theres an error
+                document.getElementById('answer').style.display = 'block';
                 return;
             }
+
+            //display the loader with flexbox centering
+            document.getElementById('answer').innerHTML = '<div class="loader"></div>';
+            document.getElementById('answer').style.display = 'flex'; //apply flex only when loading
 
             const articleText = response.text;
             const question = document.getElementById('questionField').value;
             
             // Call function to ask question to OpenAI's API
             askOpenAI(question, articleText).then(answer => {
+                document.getElementById('answer').style.display = 'block'; // Remove flex when displaying answer
                 document.getElementById('answer').innerText = answer;
             }).catch(error => {
                 console.error('Error asking OpenAI: ', error);
+                document.getElementById('answer').style.display = 'block'; // Remove flex if there's an error
                 document.getElementById('answer').innerText = 'Failed to get an answer. You beat the mastermind...for now.';
             });
         });
@@ -38,7 +46,7 @@ async function askOpenAI(question, articleText) {
             model: 'gpt-4-0125-preview',
             messages: [{ role: "user", content: prompt }],
             temperature: 0.7,
-            max_tokens: 300,
+            max_tokens: 200,
             top_p: 1.0,
             frequency_penalty: 0.0,
             presence_penalty: 0.0,
