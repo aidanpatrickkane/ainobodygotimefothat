@@ -32,28 +32,24 @@ document.getElementById('askButton').addEventListener('click', function() {
 });
 
 // Function to send question and article text to OpenAI and return the answer
-// Function to send question and article text to OpenAI and return the answer
 async function askOpenAI(question, articleText) {
-    let prompt = `Please provide a very pithy and concise answer to the following question:\n${question}\n\nBased on the article:\n${articleText}`;
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    // Define the body of the request
+    const body = {
+        question: question,
+        articleText: articleText
+    };
+    
+    // Make a POST request to your server endpoint
+    const response = await fetch('http://localhost:3000/ask', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            // Use the imported API key variable
-            'Authorization': `Bearer ${MY_API_KEY}`
         },
-        body: JSON.stringify({
-            model: 'gpt-4-0125-preview',
-            messages: [{ role: "user", content: prompt }],
-            temperature: 0.7,
-            max_tokens: 500,
-            top_p: 1.0,
-            frequency_penalty: 0.0,
-            presence_penalty: 0.0,
-        })
+        body: JSON.stringify(body)
     });
 
-    const data = await response.json(); // Log the raw response data
+    const data = await response.json(); // Parse the JSON response
     
-    return data.choices[0].message.content.trim();
+    // Assuming the server responds with a JSON object that includes an 'answer' key
+    return data.answer.trim();
 }
