@@ -7,8 +7,20 @@ const cors = require('cors');
 // Create an Express application
 const app = express();
 
+const whitelist = ['chrome-extension://clkieljoegojdljjgmaopjknmdjinhek']; // Replace with your extension's ID
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log('Blocked by CORS:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST'], // Allow only GET and POST requests
+};
 // Enable CORS for your server
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Middleware to parse JSON bodies
 app.use(express.json());
