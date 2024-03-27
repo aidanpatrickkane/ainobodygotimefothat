@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "author": "Aidan Kane",
-  "name": "Ainobodygotimefothat",
-  "description": "Quickly get your questions answered from webpage",
+  "name": "TLDRead",
+  "description": "Quickly get your questions answered from a webpage!",
   "version": "1.0",
   "permissions": ["activeTab"],
   "host_permissions": [
@@ -12,16 +12,16 @@
     "default_popup": "popup.html"
   },
   "icons": {
-    "16": "aino-logo.webp",
-    "48": "aino-logo.webp",
-    "128": "aino-logo.webp"
+    "16": "aino-logo.png",
+    "48": "aino-logo.png",
+    "128": "aino-logo.png"
   },
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["*://*/*"],
       "js": ["content.js"]
     }
   ]
