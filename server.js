@@ -7,7 +7,9 @@ const cors = require('cors');
 // Create an Express application
 const app = express();
 
-const whitelist = ['chrome-extension://clkieljoegojdljjgmaopjknmdjinhek']; // Replace with your extension's ID
+const whitelist = ['chrome-extension://clkieljoegojdljjgmaopjknmdjinhek',
+                    'chrome-extension://hlpaohgljohnkmmiaffdochgnnjngjca'
+]; // Replace with your extension's ID
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
