@@ -3,7 +3,7 @@
   "author": "Aidan Kane",
   "name": "TLDRead",
   "description": "Quickly get your questions answered from a webpage!",
-  "version": "1.0",
+  "version": "1.0.1",
   "permissions": ["activeTab"],
   "host_permissions": [
     "https://api.openai.com/*"
