@@ -3,43 +3,63 @@
 <html>
 <head>
   <title>Ask a Question</title>
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #BB86FC; /* Light Purple */
+      --hover-color: #3700B3; /* Deep Purple */
+      --text-color: #E0E0E0; /* Light Grey */
+      --background-color: #121212; /* Rich Black */
+      --answer-background: #1A1A2E; /* Deep Blue-Black */
+      --border-color: #BB86FC; /* Light Purple */
+      --accent-color: #4e9af1; /* Bright Blue */
+    }
     body {
       min-width: 300px; /* Set the minimum width of the popup */
-      padding: 10px; /* Add some padding around the content */
-      font-family: Arial, sans-serif; /* Use a modern font */
+      padding: 20px; /* Add some padding around the content */
+      font-family: 'Roboto', sans-serif; /* Use a modern font */
+      color: var(--text-color);
+      background-color: var(--background-color);
     }
     #questionField {
       width: 100%; /* Make the input field take up the full width */
-      padding: 5px; /* Add some padding inside the input field */
-      margin-bottom: 10px; /* Add some space below the input field */
+      padding: 10px; /* Add some padding inside the input field */
+      margin-bottom: 15px; /* Add some space below the input field */
       box-sizing: border-box; /* Ensure padding doesn't affect overall width */
+      border: 2px solid var(--accent-color);
+      border-radius: 8px;
+      transition: border-color 0.3s;
+    }
+    #questionField:focus {
+      border-color: var(--hover-color); /* Use accent color on focus */
+      outline: none;
     }
     #askButton {
-      padding: 5px 15px; /* Add some padding around the text in the button */
-      background-color: #007BFF; /* Set a background color for the button */
+      padding: 10px 20px; /* Add some padding around the text in the button */
+      background-color: var(--accent-color); /* Set a background color for the button */
       color: white; /* Set the text color to white for contrast */
       border: none; /* Remove the default border */
       cursor: pointer; /* Change the cursor to indicate it's clickable */
-      border-radius: 5px; /* Add rounded corners to the button */
+      border-radius: 8px; /* Add rounded corners to the button */
+      transition: background-color 0.3s;
     }
     #askButton:hover {
-      background-color: #0056b3; /* Change color when hovering for visual feedback */
+      background-color: var(--hover-color); /* Change color when hovering for visual feedback */
     }
     #answer {
       display: flex;
       justify-content: center; /*center horizontally*/
       align-items: center; /*center vertically */
-      margin-top: 10px; /* Add space above the answer section */
-      padding: 5px; /* Add padding inside the answer div */
-      background-color: #f8f9fa; /* Light background for the answer area */
-      border: 1px solid #ddd; /* Add a border to the answer area */
-      border-radius: 5px; /* Round the corners of the answer box */
+      margin-top: 15px; /* Add space above the answer section */
+      padding: 10px; /* Add padding inside the answer div */
+      background-color: var(--answer-background); /* Light background for the answer area */
+      border: 1px solid var(--accent-color); /* Add a border to the answer area */
+      border-radius: 8px; /* Round the corners of the answer box */
+      min-height: 50px;
     }
     .loader {
       border: 5px solid #f3f3f3;
-      border-top: 5px solid #3498db;
+      border-top: 5px solid var(--accent-color);
       border-radius: 50%;
       width: 30px;
       height: 30px;
@@ -53,7 +73,7 @@
 </head>
 <body>
   <h1>Question:</h1>
-  <input type="text" id="questionField" placeholder="Enter your q here, boss">
+  <input type="text" id="questionField" placeholder="Enter your question here">
   <button id="askButton">Ask</button>
   <div id="answer"></div>
   <script src="env.js"></script>
