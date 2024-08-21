@@ -38,6 +38,7 @@ async function askOpenAI(question, articleText) {
         question: question,
         articleText: articleText
     };
+    console.log(body.question[0])
     
     // Make a POST request to server endpoint
     const response = await fetch('https://tldread-24eeba558f6b.herokuapp.com/ask', {
