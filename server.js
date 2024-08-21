@@ -38,7 +38,7 @@ app.post('/ask', async (req, res) => {
 
     // Replace 'YOUR_API_KEY' with your actual OpenAI API key
     const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-      model: 'gpt-4-0125-preview',
+      model: 'gpt-4o',
       messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
       max_tokens: 500,
